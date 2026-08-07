@@ -15,8 +15,9 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      background: linear-gradient(135deg, var(--color-navy), var(--color-primary-dark));
+      background: var(--bg-main);
       padding: var(--space-sm);
+      transition: background-color var(--transition-normal);
     }
 
     .auth-card {
@@ -80,24 +81,47 @@
       text-align: center;
       font-size: 0.95rem;
     }
+
+    .auth-icon-btn {
+      background: rgba(148, 163, 184, 0.2);
+      border: none;
+      color: var(--text-main);
+      cursor: pointer;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all var(--transition-fast);
+    }
+    
+    .auth-icon-btn:hover {
+      background: rgba(148, 163, 184, 0.4);
+      transform: translateY(-2px);
+    }
   </style>
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%232563EB' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z'/%3E%3Ccircle cx='12' cy='12' r='3'/%3E%3C/svg%3E">
 </head>
 <body>
 
   <!-- Ensure AppHeader/Footer scripts exist but we use no-header/no-footer attributes to hide them if they were injected, but actually we just won't include the custom elements -->
   
   <div class="auth-layout">
-    <div class="auth-card animate-fade-in">
-      
-      <!-- Back to home link absolute -->
-      <a href="index.html" style="position: absolute; top: 20px; left: 20px; color: var(--text-muted); display: flex; align-items: center; gap: 5px; font-size: 0.9rem;">
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg> Home
-      </a>
-
-      <!-- Theme Toggle Absolute -->
-      <button id="theme-toggle" style="position: absolute; top: 20px; right: 20px; background: none; border: none; color: var(--text-main); cursor: pointer;">
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+    <!-- Fixed controls outside auth-card -->
+    <a href="index.html" style="position: fixed; top: 20px; left: 20px; color: var(--text-main); display: flex; align-items: center; gap: 5px; font-size: 0.9rem; text-decoration: none; z-index: 10;">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg> Home
+    </a>
+    <div style="position: fixed; top: 20px; right: 20px; display: flex; gap: 15px; z-index: 10;">
+      <button id="rtl-toggle" class="auth-icon-btn" title="Toggle RTL">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8 3 4 7l4 4"/><path d="M4 7h16"/><path d="m16 21 4-4-4-4"/><path d="M20 17H4"/></svg>
       </button>
+      <button id="theme-toggle" class="auth-icon-btn" title="Toggle Theme">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+      </button>
+    </div>
+
+    <div class="auth-card animate-fade-in">
 
       <a href="index.html" class="auth-logo">
         <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="var(--color-primary)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -139,10 +163,12 @@
   </div>
 
   <script>
-    // Minimal logic for Theme toggle just for auth pages
+    // Minimal logic for Theme and RTL toggle just for auth pages
     document.addEventListener('DOMContentLoaded', () => {
       const themeBtn = document.getElementById('theme-toggle');
+      const rtlBtn = document.getElementById('rtl-toggle');
       const htmlEl = document.documentElement;
+      
       let currentTheme = localStorage.getItem('theme') || 'light';
       htmlEl.setAttribute('data-theme', currentTheme);
       
@@ -157,6 +183,17 @@
           htmlEl.setAttribute('data-theme', currentTheme);
           localStorage.setItem('theme', currentTheme);
           themeBtn.innerHTML = currentTheme === 'light' ? moonIcon : sunIcon;
+        });
+      }
+
+      let currentDir = localStorage.getItem('dir') || 'ltr';
+      htmlEl.setAttribute('dir', currentDir);
+
+      if (rtlBtn) {
+        rtlBtn.addEventListener('click', () => {
+          currentDir = currentDir === 'ltr' ? 'rtl' : 'ltr';
+          htmlEl.setAttribute('dir', currentDir);
+          localStorage.setItem('dir', currentDir);
         });
       }
     });

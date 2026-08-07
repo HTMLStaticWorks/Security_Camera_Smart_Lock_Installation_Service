@@ -32,6 +32,11 @@ class AppHeader extends HTMLElement {
           display: flex;
           align-items: center;
           gap: 10px;
+          transition: color var(--transition-fast);
+        }
+
+        .logo:hover {
+          color: var(--color-primary);
         }
 
         .logo span {
@@ -157,8 +162,9 @@ class AppHeader extends HTMLElement {
                <!-- Sun/Moon SVG will be injected by app.js -->
             </button>
             <button class="icon-btn" id="rtl-toggle" title="Toggle RTL">
-               <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12h18"/><path d="m15 18 6-6-6-6"/></svg>
+               <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8 3 4 7l4 4"/><path d="M4 7h16"/><path d="m16 21 4-4-4-4"/><path d="M20 17H4"/></svg>
             </button>
+            <a href="signup.html" class="btn btn-outline" style="padding: 8px 16px; font-size: 0.9rem;">Sign Up</a>
             <a href="free-consultation.html" class="btn btn-primary" style="padding: 8px 16px; font-size: 0.9rem;">Book Consultation</a>
             
             <button class="hamburger" id="hamburger-menu">
@@ -220,11 +226,28 @@ class AppFooter extends HTMLElement {
         .footer-links a {
           color: var(--text-muted);
           transition: color var(--transition-fast);
+          position: relative;
+          display: inline-block;
+          width: fit-content;
+        }
+
+        .footer-links a::after {
+          content: '';
+          position: absolute;
+          width: 0;
+          height: 1px;
+          bottom: 0;
+          left: 0;
+          background: var(--color-primary);
+          transition: width var(--transition-fast);
         }
 
         .footer-links a:hover {
           color: var(--color-primary);
-          padding-left: 5px;
+        }
+        
+        .footer-links a:hover::after {
+          width: 100%;
         }
 
         .footer-bottom {
@@ -269,12 +292,12 @@ class AppFooter extends HTMLElement {
         <div class="container">
           <div class="footer-grid">
             <div class="footer-col">
-              <a href="index.html" class="logo" style="font-size:1.5rem; color:var(--text-main); font-weight:bold; display:flex; gap:10px; align-items:center; margin-bottom:1rem;">
+              <a href="index.html" class="logo" style="font-size:1.5rem; font-weight:bold; display:flex; gap:10px; align-items:center; margin-bottom:1rem;">
                 <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="var(--color-primary)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                   <path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z"></path>
                   <circle cx="12" cy="12" r="3"></circle>
                 </svg>
-                Vigilant Smart Installations
+                Vigilant
               </a>
               <p>Advanced security solutions for your home and business. We provide top-tier installation and 24/7 support.</p>
               <div class="social-icons">
