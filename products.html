@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>Products & Services - Vigilant Smart Installations</title>
+  <meta name="description"
+    content="Explore our premium range of CCTV cameras, smart door locks, alarm systems, and video doorbells.">
+
+  <link rel="stylesheet" href="css/variables.css">
+  <link rel="stylesheet" href="css/global.css">
+  <link rel="stylesheet" href="css/animations.css">
+
+  <style>
+    .page-header {
+      padding: calc(80px + var(--space-xl)) 0 var(--space-xl) 0;
+      background: linear-gradient(135deg, var(--color-navy), var(--color-primary-dark));
+      color: var(--color-white);
+      text-align: center;
+    }
+
+    .page-header h1,
+    .page-header p {
+      color: var(--color-white);
+    }
+
+    .product-img-wrap {
+      width: 100%;
+      height: 250px;
+      overflow: hidden;
+      border-radius: 10px;
+      margin-bottom: var(--space-sm);
+    }
+
+    .product-img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform var(--transition-normal);
+    }
+
+    .glass-card:hover .product-img {
+      transform: scale(1.1);
+    }
+
+    .features-list {
+      margin: var(--space-sm) auto;
+      padding: 0;
+      font-size: 0.9rem;
+      flex-grow: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      width: fit-content;
+    }
+
+    .features-list li {
+      margin-bottom: 8px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      text-align: left;
+    }
+
+    .category-title {
+      border-bottom: 2px solid var(--color-primary);
+      display: inline-block;
+      padding-bottom: 10px;
+      margin-bottom: var(--space-md);
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="loader-wrapper" id="global-loader">
+    <div class="loader"></div>
+  </div>
+  <app-header></app-header>
+
+  <main>
+    <section class="page-header">
+      <div class="container animate-fade-in">
+        <h1>Our Premium Products</h1>
+        <p>State-of-the-art security hardware installed by professionals.</p>
+      </div>
+    </section>
+
+    <!-- Content 1: CCTV Cameras -->
+    <section class="section">
+      <div class="container">
+        <h2 class="category-title reveal">CCTV Cameras</h2>
+        <div class="grid grid-3 reveal">
+
+          <div class="glass-card">
+            <div class="product-img-wrap">
+              <img src="https://images.pexels.com/photos/7635126/pexels-photo-7635126.jpeg" alt="Bullet Camera"
+                class="product-img">
+            </div>
+            <h3>4K Bullet Camera</h3>
+            <ul class="features-list">
+              <li>✔️ Ultra HD 4K Resolution</li>
+              <li>✔️ 100ft Night Vision</li>
+              <li>✔️ Weatherproof (IP67)</li>
+            </ul>
+            <a href="free-consultation.html" class="btn btn-primary" style="width: 100%;">Installation Available</a>
+          </div>
+
+          <div class="glass-card delay-100">
+            <div class="product-img-wrap">
+              <img src="https://images.pexels.com/photos/7364948/pexels-photo-7364948.jpeg" alt="Dome Camera"
+                class="product-img">
+            </div>
+            <h3>Vandal Dome Camera</h3>
+            <ul class="features-list">
+              <li>✔️ Vandal Resistant (IK10)</li>
+              <li>✔️ Wide Angle Lens</li>
+              <li>✔️ Built-in Audio</li>
+            </ul>
+            <a href="free-consultation.html" class="btn btn-primary" style="width: 100%;">Installation Available</a>
+          </div>
+
+          <div class="glass-card delay-200">
+            <div class="product-img-wrap">
+              <img src="https://images.pexels.com/photos/27934755/pexels-photo-27934755.jpeg" alt="PTZ Camera"
+                class="product-img">
+            </div>
+            <h3>Smart PTZ Camera</h3>
+            <ul class="features-list">
+              <li>✔️ 360° Pan, Tilt, Zoom</li>
+              <li>✔️ Auto Tracking AI</li>
+              <li>✔️ 30x Optical Zoom</li>
+            </ul>
+            <a href="free-consultation.html" class="btn btn-primary" style="width: 100%;">Installation Available</a>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- Content 2: Smart Door Locks -->
+    <section class="section" style="background: var(--bg-alt);">
+      <div class="container">
+        <h2 class="category-title reveal">Smart Door Locks</h2>
+        <div class="grid grid-3 reveal">
+
+          <div class="glass-card">
+            <div class="product-img-wrap">
+              <img src="https://images.pexels.com/photos/37538043/pexels-photo-37538043.jpeg" alt="Biometric Lock"
+                class="product-img">
+            </div>
+            <h3>Biometric Pro Lock</h3>
+            <ul class="features-list">
+              <li>✔️ 3D Fingerprint Scanner</li>
+              <li>✔️ Touchscreen Keypad</li>
+              <li>✔️ Smartphone Control</li>
+            </ul>
+            <a href="free-consultation.html" class="btn btn-primary" style="width: 100%;">Installation Available</a>
+          </div>
+
+          <div class="glass-card delay-100">
+            <div class="product-img-wrap">
+              <img src="https://images.pexels.com/photos/13007854/pexels-photo-13007854.jpeg" alt="Keypad Lock"
+                class="product-img">
+            </div>
+            <h3>Smart Keypad Deadbolt</h3>
+            <ul class="features-list">
+              <li>✔️ Auto-Locking Feature</li>
+              <li>✔️ Guest Access Codes</li>
+              <li>✔️ Voice Assistant Compatible</li>
+            </ul>
+            <a href="free-consultation.html" class="btn btn-primary" style="width: 100%;">Installation Available</a>
+          </div>
+
+          <div class="glass-card delay-200">
+            <div class="product-img-wrap">
+              <img src="https://images.pexels.com/photos/6689289/pexels-photo-6689289.jpeg" alt="Video Smart Lock"
+                class="product-img">
+            </div>
+            <h3>Video Smart Lock</h3>
+            <ul class="features-list">
+              <li>✔️ Built-in HD Camera</li>
+              <li>✔️ Two-Way Audio Talk</li>
+              <li>✔️ Remote Lock & Unlock</li>
+            </ul>
+            <a href="free-consultation.html" class="btn btn-primary" style="width: 100%;">Installation Available</a>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- Content 3: Alarm & Access Control Systems -->
+    <section class="section">
+      <div class="container">
+        <h2 class="category-title reveal">Alarm & Access Control Systems</h2>
+        <div class="grid grid-3 reveal">
+
+          <div class="glass-card">
+            <div class="product-img-wrap">
+              <img src="https://images.pexels.com/photos/17828637/pexels-photo-17828637.jpeg" alt="Alarm Panel"
+                class="product-img">
+            </div>
+            <h3>Central Alarm Hub</h3>
+            <ul class="features-list">
+              <li>✔️ Cellular Backup Connection</li>
+              <li>✔️ 24/7 Professional Monitoring</li>
+              <li>✔️ Battery Backup</li>
+            </ul>
+            <a href="free-consultation.html" class="btn btn-primary" style="width: 100%;">Installation Available</a>
+          </div>
+
+          <div class="glass-card delay-100">
+            <div class="product-img-wrap">
+              <img src="https://images.pexels.com/photos/13657375/pexels-photo-13657375.jpeg" alt="Keycard Reader"
+                class="product-img">
+            </div>
+            <h3>Enterprise Access Reader</h3>
+            <ul class="features-list">
+              <li>✔️ RFID & NFC Compatible</li>
+              <li>✔️ Employee Time Tracking</li>
+              <li>✔️ Scalable to 100+ Doors</li>
+            </ul>
+            <a href="free-consultation.html" class="btn btn-primary" style="width: 100%;">Installation Available</a>
+          </div>
+
+          <div class="glass-card delay-200">
+            <div class="product-img-wrap">
+              <img src="https://images.pexels.com/photos/6407436/pexels-photo-6407436.jpeg" alt="Video Intercom"
+                class="product-img">
+            </div>
+            <h3>Video Intercom System</h3>
+            <ul class="features-list">
+              <li>✔️ Remote Guest Verification</li>
+              <li>✔️ Apartment & Multi-Tenant</li>
+              <li>✔️ Direct Mobile Alerts</li>
+            </ul>
+            <a href="free-consultation.html" class="btn btn-primary" style="width: 100%;">Installation Available</a>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- Content 4: Video Doorbells & Smart Accessories -->
+    <section class="section" style="background: var(--bg-alt);">
+      <div class="container">
+        <h2 class="category-title reveal">Video Doorbells & Smart Accessories</h2>
+        <div class="grid grid-3 reveal">
+
+          <div class="glass-card">
+            <div class="product-img-wrap">
+              <img src="https://images.pexels.com/photos/6407436/pexels-photo-6407436.jpeg" alt="Video Doorbell"
+                class="product-img">
+            </div>
+            <h3>Pro Video Doorbell</h3>
+            <ul class="features-list">
+              <li>✔️ 2K HDR Video Quality</li>
+              <li>✔️ Two-Way Talk & Quick Replies</li>
+              <li>✔️ Package Detection AI</li>
+            </ul>
+            <a href="free-consultation.html" class="btn btn-primary" style="width: 100%;">Installation Available</a>
+          </div>
+
+          <div class="glass-card delay-100">
+            <div class="product-img-wrap">
+              <img src="https://images.pexels.com/photos/17547230/pexels-photo-17547230.jpeg" alt="Sensors"
+                class="product-img">
+            </div>
+            <h3>Smart Sensors Pack</h3>
+            <ul class="features-list">
+              <li>✔️ Window & Door Contacts</li>
+              <li>✔️ Motion Detectors</li>
+              <li>✔️ Glass Break Sensors</li>
+            </ul>
+            <a href="free-consultation.html" class="btn btn-primary" style="width: 100%;">Installation Available</a>
+          </div>
+
+          <div class="glass-card delay-200">
+            <div class="product-img-wrap">
+              <img src="https://images.pexels.com/photos/19701594/pexels-photo-19701594.jpeg" alt="Smart Hub"
+                class="product-img">
+            </div>
+            <h3>Smart Home Hub</h3>
+            <ul class="features-list">
+              <li>✔️ Integrates All Devices</li>
+              <li>✔️ Local Video Storage (1TB)</li>
+              <li>✔️ Battery Backup Included</li>
+            </ul>
+            <a href="free-consultation.html" class="btn btn-primary" style="width: 100%;">Installation Available</a>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <app-footer></app-footer>
+
+  <script src="js/components.js"></script>
+  <script src="js/app.js"></script>
+</body>
+
+</html>

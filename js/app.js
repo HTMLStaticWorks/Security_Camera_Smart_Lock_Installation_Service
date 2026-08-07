@@ -1,0 +1,155 @@
+document.addEventListener('DOMContentLoaded', () => {
+  
+  // Remove Loader
+  const loader = document.getElementById('global-loader');
+  if (loader) {
+    setTimeout(() => {
+      loader.style.opacity = '0';
+      setTimeout(() => loader.remove(), 500);
+    }, 500);
+  }
+
+  // Mobile Menu Toggle
+  setTimeout(() => { // wait for components to render
+    const hamburger = document.getElementById('hamburger-menu');
+    const navLinks = document.getElementById('nav-links');
+    if (hamburger && navLinks) {
+      hamburger.addEventListener('click', () => {
+        navLinks.classList.toggle('show');
+      });
+    }
+
+    // Theme Toggle Logic
+    const themeBtn = document.getElementById('theme-toggle');
+    const htmlEl = document.documentElement;
+    const sunIcon = `<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>`;
+    const moonIcon = `<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>`;
+    
+    // Init theme
+    let currentTheme = localStorage.getItem('theme') || 'light';
+    htmlEl.setAttribute('data-theme', currentTheme);
+    if(themeBtn) themeBtn.innerHTML = currentTheme === 'light' ? moonIcon : sunIcon;
+
+    if (themeBtn) {
+      themeBtn.addEventListener('click', () => {
+        currentTheme = currentTheme === 'light' ? 'dark' : 'light';
+        htmlEl.setAttribute('data-theme', currentTheme);
+        localStorage.setItem('theme', currentTheme);
+        themeBtn.innerHTML = currentTheme === 'light' ? moonIcon : sunIcon;
+      });
+    }
+
+    // RTL Toggle Logic
+    const rtlBtn = document.getElementById('rtl-toggle');
+    let currentDir = localStorage.getItem('dir') || 'ltr';
+    htmlEl.setAttribute('dir', currentDir);
+
+    if (rtlBtn) {
+      rtlBtn.addEventListener('click', () => {
+        currentDir = currentDir === 'ltr' ? 'rtl' : 'ltr';
+        htmlEl.setAttribute('dir', currentDir);
+        localStorage.setItem('dir', currentDir);
+      });
+    }
+
+    // Sticky Header Logic
+    const header = document.getElementById('main-header');
+    if (header) {
+      window.addEventListener('scroll', () => {
+        if (window.scrollY > 50) {
+          header.style.boxShadow = '0 4px 10px rgba(0,0,0,0.1)';
+        } else {
+          header.style.boxShadow = 'none';
+        }
+      });
+    }
+  }, 100);
+
+  // Scroll Reveal Animation
+  const revealElements = document.querySelectorAll('.reveal');
+  const revealOnScroll = () => {
+    const windowHeight = window.innerHeight;
+    const revealPoint = 100;
+    
+    revealElements.forEach(el => {
+      const revealTop = el.getBoundingClientRect().top;
+      if (revealTop < windowHeight - revealPoint) {
+        el.classList.add('active');
+      }
+    });
+  };
+
+  window.addEventListener('scroll', revealOnScroll);
+  revealOnScroll(); // Trigger on load
+
+  // Back to Top and Scroll Progress
+  const backToTopBtn = document.createElement('div');
+  backToTopBtn.className = 'back-to-top';
+  backToTopBtn.innerHTML = `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="19" x2="12" y2="5"/><polyline points="5 12 12 5 19 12"/></svg>`;
+  document.body.appendChild(backToTopBtn);
+
+  const scrollProgress = document.createElement('div');
+  scrollProgress.className = 'scroll-progress';
+  document.body.appendChild(scrollProgress);
+
+  const style = document.createElement('style');
+  style.innerHTML = `
+    .back-to-top {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      width: 50px;
+      height: 50px;
+      background: var(--color-primary);
+      color: white;
+      border-radius: 50%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      cursor: pointer;
+      opacity: 0;
+      transform: translateY(20px);
+      transition: all 0.3s ease;
+      z-index: 999;
+      box-shadow: var(--shadow-md);
+    }
+    .back-to-top.show {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    .back-to-top:hover {
+      background: var(--color-primary-dark);
+      transform: translateY(-5px);
+    }
+    .scroll-progress {
+      position: fixed;
+      top: 0;
+      left: 0;
+      height: 3px;
+      background: var(--color-secondary);
+      z-index: 1001;
+      transition: width 0.1s ease;
+    }
+  `;
+  document.head.appendChild(style);
+
+  window.addEventListener('scroll', () => {
+    // Show back to top
+    if (window.scrollY > 300) {
+      backToTopBtn.classList.add('show');
+    } else {
+      backToTopBtn.classList.remove('show');
+    }
+
+    // Update scroll progress
+    const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+    const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+    const scrolled = (winScroll / height) * 100;
+    scrollProgress.style.width = scrolled + "%";
+  });
+
+  backToTopBtn.addEventListener('click', () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  });
+
+});

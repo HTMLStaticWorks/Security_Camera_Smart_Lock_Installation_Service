@@ -1,0 +1,483 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>Vigilant Smart Installations - Smart Security Showcase</title>
+  <meta name="description" content="Discover our complete range of security installation packages for homes, offices, and enterprise properties.">
+  
+  <link rel="stylesheet" href="css/variables.css">
+  <link rel="stylesheet" href="css/global.css">
+  <link rel="stylesheet" href="css/animations.css">
+  
+  <style>
+    /* Home 2 specific styles */
+    .split-hero {
+      min-height: 100vh;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      align-items: center;
+      padding-top: 80px;
+    }
+    
+    .split-hero-content {
+      padding: var(--space-xl);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+    }
+    
+    .split-hero-image {
+      height: calc(100vh - 80px);
+      width: 100%;
+      background: url('https://images.unsplash.com/photo-1557597774-9d273605dfa9?auto=format&fit=crop&q=80&w=1200') center/cover;
+      position: relative;
+    }
+
+    .split-hero-image::after {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: linear-gradient(to right, var(--bg-main), transparent);
+    }
+
+    /* Packages */
+    .package-card {
+      background: var(--bg-card);
+      border: var(--glass-border);
+      border-radius: 20px;
+      padding: var(--space-lg) var(--space-md);
+      text-align: center;
+      box-shadow: var(--shadow-md);
+      transition: all var(--transition-normal);
+      display: flex;
+      flex-direction: column;
+      height: 100%;
+    }
+    
+    .package-card.popular {
+      background: linear-gradient(135deg, var(--color-navy), var(--color-primary-dark));
+      color: var(--color-white);
+      transform: translateY(-20px);
+    }
+
+    .package-card.popular h3,
+    .package-card.popular .price,
+    .package-card.popular p,
+    .package-card.popular li {
+      color: var(--color-white);
+    }
+    
+    .package-card:hover {
+      transform: translateY(-10px);
+      box-shadow: var(--shadow-lg);
+    }
+    
+    .package-card.popular:hover {
+      transform: translateY(-30px);
+    }
+
+    .price {
+      font-size: 2.5rem;
+      font-family: var(--font-heading);
+      font-weight: 700;
+      color: var(--color-primary);
+      margin: var(--space-sm) 0;
+    }
+
+    .package-features {
+      margin-bottom: var(--space-md);
+      text-align: left;
+      flex-grow: 1;
+    }
+
+    .package-features li {
+      margin-bottom: 10px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .package-card .btn {
+      margin-top: auto;
+    }
+
+    /* Vertical Timeline */
+    .timeline {
+      position: relative;
+      max-width: 800px;
+      margin: var(--space-xl) auto 0 auto;
+    }
+
+    .timeline::after {
+      content: '';
+      position: absolute;
+      width: 4px;
+      background-color: rgba(37, 99, 235, 0.2);
+      top: 0;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+
+    .timeline-step {
+      padding: 10px 40px;
+      position: relative;
+      width: 50%;
+      margin-bottom: var(--space-lg);
+    }
+
+    .timeline-step:last-child {
+      margin-bottom: 0;
+    }
+
+    .timeline-step.left {
+      left: 0;
+      text-align: right;
+    }
+
+    .timeline-step.right {
+      left: 50%;
+      text-align: left;
+    }
+
+    .step-number {
+      position: absolute;
+      width: 60px;
+      height: 60px;
+      background: var(--color-primary);
+      color: white;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.5rem;
+      font-weight: bold;
+      top: 50%;
+      transform: translateY(-50%);
+      z-index: 1;
+      box-shadow: 0 0 0 10px var(--bg-alt);
+    }
+
+    .timeline-step.left .step-number {
+      right: -30px;
+    }
+
+    .timeline-step.right .step-number {
+      left: -30px;
+    }
+
+    .timeline-content {
+      padding: var(--space-md);
+      background: var(--bg-card);
+      border-radius: 15px;
+      border: var(--glass-border);
+      position: relative;
+      transition: transform var(--transition-normal);
+    }
+
+    .timeline-content:hover {
+      transform: translateY(-5px);
+    }
+
+    .process-section {
+      background: var(--bg-alt);
+      color: var(--text-main);
+      overflow: hidden;
+    }
+
+    .process-section h2, .process-section h3 {
+      color: var(--text-main);
+      margin-bottom: 10px;
+    }
+
+    .process-section p {
+      color: var(--text-muted);
+      margin: 0;
+    }
+
+    @media (max-width: 768px) {
+      .timeline::after {
+        left: 30px;
+      }
+      .timeline-step {
+        width: 100%;
+        padding-left: 80px;
+        padding-right: 0;
+        text-align: left !important;
+      }
+      .timeline-step.right {
+        left: 0;
+      }
+      .timeline-step.left .step-number, .timeline-step.right .step-number {
+        left: 0;
+      }
+    }
+
+    /* Stats */
+    .stat-item {
+      text-align: center;
+    }
+    
+    .stat-number {
+      font-size: 3rem;
+      font-weight: 800;
+      font-family: var(--font-heading);
+      color: var(--color-primary);
+      margin-bottom: 10px;
+    }
+
+    .brands-row {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 40px;
+      flex-wrap: wrap;
+      opacity: 0.6;
+      margin-bottom: var(--space-xl);
+    }
+    
+    .brands-row img {
+      height: 40px;
+      filter: grayscale(100%);
+      transition: all 0.3s;
+    }
+    
+    .brands-row img:hover {
+      filter: grayscale(0%);
+      opacity: 1;
+    }
+
+    @media (max-width: 768px) {
+      .split-hero {
+        grid-template-columns: 1fr;
+      }
+      .split-hero-image {
+        display: none;
+      }
+      .split-hero-content {
+        padding: var(--space-xl) var(--space-sm);
+        text-align: center;
+      }
+      .package-card.popular {
+        transform: translateY(0);
+      }
+      .package-card.popular:hover {
+        transform: translateY(-10px);
+      }
+      .process-step::after {
+        display: none;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Global Loader -->
+  <div class="loader-wrapper" id="global-loader">
+    <div class="loader"></div>
+  </div>
+
+  <app-header></app-header>
+
+  <main>
+    <!-- Content 1: Smart Security Showcase -->
+    <section class="split-hero">
+      <div class="split-hero-content">
+        <span style="color: var(--color-primary); font-weight: 600; letter-spacing: 2px; text-transform: uppercase;">Smart Security Showcase</span>
+        <h1 class="animate-fade-in" style="margin-top: 15px;">Next-Generation Protection for the Modern Era</h1>
+        <p class="animate-fade-in delay-200" style="font-size: 1.1rem; margin-bottom: 30px;">Experience the future of property security. Fully integrated, cloud-managed, and accessible from anywhere on any device.</p>
+        <ul class="animate-fade-in delay-300" style="margin-bottom: 30px; display: flex; flex-direction: column; gap: 10px; align-items: center;">
+          <li style="display: flex; align-items: center; gap: 10px;"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--color-secondary)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg> Artificial Intelligence Motion Detection</li>
+          <li style="display: flex; align-items: center; gap: 10px;"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--color-secondary)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg> Seamless Smart Home Integration</li>
+          <li style="display: flex; align-items: center; gap: 10px;"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--color-secondary)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg> 24/7 Cloud Video Backup</li>
+        </ul>
+        <div class="animate-fade-in delay-400">
+          <a href="free-consultation.html" class="btn btn-primary">Start Your Project</a>
+        </div>
+      </div>
+      <div class="split-hero-image animate-slide-right"></div>
+    </section>
+
+    <!-- Content 2: Installation Packages -->
+    <section class="section">
+      <div class="container">
+        <div class="text-center reveal" style="margin-bottom: var(--space-xl)">
+          <h2>Installation Packages</h2>
+          <p>Transparent pricing and scalable solutions for properties of all sizes.</p>
+        </div>
+        
+        <div class="grid grid-4 reveal">
+          <!-- Home Package -->
+          <div class="package-card">
+            <h3>Home Starter</h3>
+            <p>Perfect for apartments and small homes.</p>
+            <div class="price">From $499</div>
+            <ul class="package-features">
+              <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--color-primary)" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg> 2 HD Wi-Fi Cameras</li>
+              <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--color-primary)" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg> 1 Smart Video Doorbell</li>
+              <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--color-primary)" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg> Mobile App Access</li>
+              <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--color-primary)" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg> Standard Installation</li>
+            </ul>
+            <a href="contact.html" class="btn btn-outline">Get Quote</a>
+          </div>
+          
+          <!-- Office Package -->
+          <div class="package-card popular">
+            <div style="font-size: 0.8rem; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 10px; color: var(--color-secondary);">Most Popular</div>
+            <h3>Office Plus</h3>
+            <p>Ideal for small to medium businesses.</p>
+            <div class="price" style="color: var(--color-white);">From $1,299</div>
+            <ul class="package-features">
+              <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--color-secondary)" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg> 4-8 4K IP Cameras</li>
+              <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--color-secondary)" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg> 2 Smart Access Locks</li>
+              <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--color-secondary)" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg> 1TB NVR Storage</li>
+              <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--color-secondary)" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg> Professional Installation</li>
+            </ul>
+            <a href="contact.html" class="btn btn-primary" style="background: white; color: var(--color-primary);">Get Quote</a>
+          </div>
+
+          <!-- Commercial Package -->
+          <div class="package-card">
+            <h3>Commercial</h3>
+            <p>Comprehensive coverage for retail & warehouses.</p>
+            <div class="price">From $2,999</div>
+            <ul class="package-features">
+              <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--color-primary)" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg> Up to 16 PTZ Cameras</li>
+              <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--color-primary)" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg> Centralized Access Control</li>
+              <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--color-primary)" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg> Monitored Alarm System</li>
+              <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--color-primary)" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg> Priority Support</li>
+            </ul>
+            <a href="contact.html" class="btn btn-outline">Get Quote</a>
+          </div>
+          
+          <!-- Enterprise Package -->
+          <div class="package-card">
+            <h3>Enterprise</h3>
+            <p>Custom infrastructure for large corporations.</p>
+            <div class="price">Custom</div>
+            <ul class="package-features">
+              <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--color-primary)" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg> Unlimited Camera Scaling</li>
+              <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--color-primary)" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg> AI Analytics & Facial Rec.</li>
+              <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--color-primary)" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg> Multi-site Management</li>
+              <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--color-primary)" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg> Dedicated Account Manager</li>
+            </ul>
+            <a href="free-consultation.html" class="btn btn-outline">Book Consultation</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- NEW CONTENT: Mobile App Experience -->
+    <section class="section" style="background: linear-gradient(135deg, var(--color-navy), var(--color-primary-dark)); color: var(--color-white);">
+      <div class="container">
+        <div class="grid grid-2" style="align-items: center; gap: var(--space-xl);">
+          <div class="reveal animate-slide-left">
+            <img src="https://images.unsplash.com/photo-1512428559087-560fa5ceab42?auto=format&fit=crop&q=80&w=800" alt="Mobile App Security Control" style="border-radius: 20px; box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);">
+          </div>
+          <div class="reveal">
+            <span style="color: var(--color-secondary); font-weight: 600; letter-spacing: 2px; text-transform: uppercase;">Total Control in Your Pocket</span>
+            <h2 style="color: var(--color-white); margin-top: 15px; margin-bottom: 20px;">The Vigilant Mobile App</h2>
+            <p style="color: var(--color-light-gray); margin-bottom: 30px; font-size: 1.1rem;">Manage your entire security infrastructure from anywhere in the world. View live 4K streams, lock/unlock doors remotely, and receive instant push notifications if motion is detected.</p>
+            
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
+              <div style="background: rgba(255, 255, 255, 0.1); padding: 20px; border-radius: 15px;">
+                <h4 style="color: var(--color-white); margin-bottom: 10px;">Live Streaming</h4>
+                <p style="font-size: 0.9rem; color: #94A3B8; margin: 0;">Crystal clear remote viewing with two-way audio.</p>
+              </div>
+              <div style="background: rgba(255, 255, 255, 0.1); padding: 20px; border-radius: 15px;">
+                <h4 style="color: var(--color-white); margin-bottom: 10px;">Access Management</h4>
+                <p style="font-size: 0.9rem; color: #94A3B8; margin: 0;">Create and revoke guest pin codes on the fly.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Content 3: Installation Process -->
+    <section class="section process-section">
+      <div class="container">
+        <div class="text-center reveal" style="margin-bottom: var(--space-lg)">
+          <h2>Our Simple Installation Process</h2>
+          <p>From planning to execution, we ensure a smooth and hassle-free experience.</p>
+        </div>
+        
+        <div class="timeline reveal">
+          <div class="timeline-step left">
+            <div class="step-number">1</div>
+            <div class="timeline-content">
+              <h3>Consultation</h3>
+              <p>We discuss your specific security needs and budget over the phone or online.</p>
+            </div>
+          </div>
+          <div class="timeline-step right delay-100">
+            <div class="step-number">2</div>
+            <div class="timeline-content">
+              <h3>Site Survey</h3>
+              <p>Our experts visit your property to identify vulnerabilities and camera placements.</p>
+            </div>
+          </div>
+          <div class="timeline-step left delay-200">
+            <div class="step-number">3</div>
+            <div class="timeline-content">
+              <h3>Installation</h3>
+              <p>Certified technicians cleanly and securely install all hardware and wiring.</p>
+            </div>
+          </div>
+          <div class="timeline-step right delay-300">
+            <div class="step-number">4</div>
+            <div class="timeline-content">
+              <h3>Testing & Training</h3>
+              <p>We configure the system, run diagnostics, and train you on the mobile app.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Content 4: Trusted Brands & Statistics -->
+    <section class="section container reveal">
+      <div class="text-center" style="margin-bottom: var(--space-lg)">
+        <h3 style="color: var(--text-muted); font-size: 1rem; text-transform: uppercase; letter-spacing: 2px;">Partnering with Industry Leaders</h3>
+      </div>
+      
+      <!-- Brands (Using simple text/SVGs as placeholders for logos) -->
+      <div class="brands-row">
+        <h2 style="color: var(--text-muted);">Samsung</h2>
+        <h2 style="color: var(--text-muted);">Dahua</h2>
+        <h2 style="color: var(--text-muted);">Hikvision</h2>
+        <h2 style="color: var(--text-muted);">Yale</h2>
+        <h2 style="color: var(--text-muted);">Ring</h2>
+      </div>
+
+      <div class="grid grid-4" style="margin-top: var(--space-xl)">
+        <div class="stat-item">
+          <div class="stat-number">10+</div>
+          <p>Years of Experience</p>
+        </div>
+        <div class="stat-item">
+          <div class="stat-number">5,000+</div>
+          <p>Completed Projects</p>
+        </div>
+        <div class="stat-item">
+          <div class="stat-number">24/7</div>
+          <p>Support Available</p>
+        </div>
+        <div class="stat-item">
+          <div class="stat-number">100%</div>
+          <p>Happy Clients</p>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <app-footer></app-footer>
+
+  <script src="js/components.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>

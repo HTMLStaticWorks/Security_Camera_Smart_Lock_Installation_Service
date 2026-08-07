@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>Security Blog & Resources - Vigilant Smart Installations</title>
+  <meta name="description" content="Read the latest security articles, home security tips, and smart lock buying guides.">
+  
+  <link rel="stylesheet" href="css/variables.css">
+  <link rel="stylesheet" href="css/global.css">
+  <link rel="stylesheet" href="css/animations.css">
+  
+  <style>
+    .page-header {
+      padding: calc(80px + var(--space-xl)) 0 var(--space-xl) 0;
+      background: linear-gradient(135deg, var(--color-navy), var(--color-primary-dark));
+      color: var(--color-white);
+      text-align: center;
+    }
+    
+    .page-header h1, .page-header p {
+      color: var(--color-white);
+    }
+    
+    .blog-card {
+      background: var(--bg-card);
+      border-radius: 20px;
+      overflow: hidden;
+      box-shadow: var(--shadow-md);
+      transition: all var(--transition-normal);
+      display: flex;
+      flex-direction: column;
+      height: 100%;
+    }
+
+    .blog-card:hover {
+      transform: translateY(-10px);
+      box-shadow: var(--shadow-lg);
+    }
+
+    .blog-img {
+      width: 100%;
+      height: 220px;
+      object-fit: cover;
+    }
+
+    .blog-content {
+      padding: var(--space-md);
+      display: flex;
+      flex-direction: column;
+      flex-grow: 1;
+    }
+
+    .blog-tag {
+      background: rgba(37, 99, 235, 0.1);
+      color: var(--color-primary);
+      padding: 4px 10px;
+      border-radius: 20px;
+      font-size: 0.8rem;
+      font-weight: 600;
+      display: inline-block;
+      margin-bottom: 15px;
+      align-self: flex-start;
+    }
+
+    .blog-title {
+      font-size: 1.2rem;
+      margin-bottom: 10px;
+    }
+
+    .blog-desc {
+      font-size: 0.95rem;
+      margin-bottom: 20px;
+      flex-grow: 1;
+    }
+
+    .blog-footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-top: 1px solid rgba(148, 163, 184, 0.2);
+      padding-top: 15px;
+      font-size: 0.85rem;
+      color: #94A3B8;
+    }
+    
+    .category-title {
+      border-bottom: 2px solid var(--color-primary);
+      display: inline-block;
+      padding-bottom: 10px;
+      margin-bottom: var(--space-md);
+    }
+  </style>
+</head>
+<body>
+
+  <div class="loader-wrapper" id="global-loader"><div class="loader"></div></div>
+  <app-header></app-header>
+
+  <main>
+    <section class="page-header">
+      <div class="container animate-fade-in">
+        <h1>Security Insights & Resources</h1>
+        <p>Expert tips, guides, and news to keep your property safe.</p>
+      </div>
+    </section>
+
+    <!-- Content 1: Latest Security Articles & Content 2: Home Security Tips -->
+    <section class="section">
+      <div class="container">
+        <h2 class="category-title reveal">Latest Articles & Home Security Tips</h2>
+        
+        <div class="grid grid-3 reveal">
+          <!-- Article 1 -->
+          <div class="blog-card">
+            <img src="https://images.unsplash.com/photo-1558002038-1055907df827?auto=format&fit=crop&q=80&w=600" alt="Home Security" class="blog-img">
+            <div class="blog-content">
+              <span class="blog-tag">Home Security Tips</span>
+              <h3 class="blog-title"><a href="#" style="color: inherit;">5 Ways to Secure Your Home Before a Vacation</a></h3>
+              <p class="blog-desc">Heading out of town? Follow these essential steps to ensure your property remains untouched while you are away.</p>
+              <div class="blog-footer">
+                <span>By Vigilant Team</span>
+                <span>Oct 12, 2023</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Article 2 -->
+          <div class="blog-card delay-100">
+            <img src="https://images.unsplash.com/photo-1555529733-0e67056058e1?auto=format&fit=crop&q=80&w=600" alt="Cyber Security" class="blog-img">
+            <div class="blog-content">
+              <span class="blog-tag">Latest News</span>
+              <h3 class="blog-title"><a href="#" style="color: inherit;">The Rise of AI in Modern Alarm Systems</a></h3>
+              <p class="blog-desc">Discover how artificial intelligence is drastically reducing false alarms and improving response times.</p>
+              <div class="blog-footer">
+                <span>By Jane Smith</span>
+                <span>Oct 05, 2023</span>
+              </div>
+            </div>
+          </div>
+          
+          <!-- Article 3 -->
+          <div class="blog-card delay-200">
+            <img src="https://images.unsplash.com/photo-1582268611958-ebfd161ef9cf?auto=format&fit=crop&q=80&w=600" alt="Window Sensor" class="blog-img">
+            <div class="blog-content">
+              <span class="blog-tag">Home Security Tips</span>
+              <h3 class="blog-title"><a href="#" style="color: inherit;">Why Perimeter Sensors Are Essential</a></h3>
+              <p class="blog-desc">Learn why stopping an intruder before they enter your home is the best security strategy.</p>
+              <div class="blog-footer">
+                <span>By John Doe</span>
+                <span>Sep 28, 2023</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Content 3: Smart Lock Buying Guide -->
+    <section class="section" style="background: var(--bg-alt);">
+      <div class="container">
+        <h2 class="category-title reveal">Smart Lock Buying Guide</h2>
+        <div class="grid grid-3 reveal">
+          
+          <!-- Article 4 -->
+          <div class="blog-card">
+            <img src="https://images.unsplash.com/photo-1563298723-dcfebaa392e3?auto=format&fit=crop&q=80&w=600" alt="Biometric Lock" class="blog-img">
+            <div class="blog-content">
+              <span class="blog-tag">Buying Guide</span>
+              <h3 class="blog-title"><a href="#" style="color: inherit;">Biometric vs Keypad Locks: Which is Better?</a></h3>
+              <p class="blog-desc">A deep dive into the pros and cons of fingerprint scanning locks versus traditional PIN code keypads.</p>
+              <div class="blog-footer">
+                <span>By Mike Johnson</span>
+                <span>Sep 15, 2023</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Article 5 -->
+          <div class="blog-card delay-100">
+            <img src="https://images.unsplash.com/photo-1580197779777-626a45749f50?auto=format&fit=crop&q=80&w=600" alt="Smart Home" class="blog-img">
+            <div class="blog-content">
+              <span class="blog-tag">Buying Guide</span>
+              <h3 class="blog-title"><a href="#" style="color: inherit;">Top 5 Smart Locks Compatible with Alexa</a></h3>
+              <p class="blog-desc">Looking to integrate your front door with your voice assistant? Here are our top recommendations.</p>
+              <div class="blog-footer">
+                <span>By Vigilant Team</span>
+                <span>Sep 02, 2023</span>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- Content 4: CCTV Maintenance & Installation Tips -->
+    <section class="section">
+      <div class="container">
+        <h2 class="category-title reveal">CCTV Maintenance & Installation Tips</h2>
+        <div class="grid grid-3 reveal">
+          
+          <!-- Article 6 -->
+          <div class="blog-card">
+            <img src="https://images.unsplash.com/photo-1557597774-9d273605dfa9?auto=format&fit=crop&q=80&w=600" alt="Camera lens cleaning" class="blog-img">
+            <div class="blog-content">
+              <span class="blog-tag">Maintenance Tip</span>
+              <h3 class="blog-title"><a href="#" style="color: inherit;">How to Clean Your Outdoor CCTV Cameras</a></h3>
+              <p class="blog-desc">Spider webs and dust can ruin your night vision. Follow this quick guide to safely clean your camera lenses.</p>
+              <div class="blog-footer">
+                <span>By John Doe</span>
+                <span>Aug 20, 2023</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Article 7 -->
+          <div class="blog-card delay-100">
+            <img src="https://images.unsplash.com/photo-1584433144859-1fc3ab64a957?auto=format&fit=crop&q=80&w=600" alt="Installation" class="blog-img">
+            <div class="blog-content">
+              <span class="blog-tag">Installation Tip</span>
+              <h3 class="blog-title"><a href="#" style="color: inherit;">Avoiding Blind Spots: Camera Placement 101</a></h3>
+              <p class="blog-desc">Where you mount your cameras is just as important as the cameras themselves. Learn the best angles.</p>
+              <div class="blog-footer">
+                <span>By Jane Smith</span>
+                <span>Aug 11, 2023</span>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <app-footer></app-footer>
+
+  <script src="js/components.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>

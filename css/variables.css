@@ -1,0 +1,58 @@
+:root {
+  /* Colors */
+  --color-primary: #2563EB; /* Royal Blue */
+  --color-primary-dark: #1E40AF;
+  --color-secondary: #10B981; /* Emerald Green */
+  --color-secondary-dark: #059669;
+  
+  --color-navy: #0F172A; /* Deep Navy */
+  --color-white: #FFFFFF;
+  --color-light-gray: #F8FAFC;
+  --color-dark-gray: #334155;
+  --color-text-body: #475569;
+  
+  --bg-main: var(--color-light-gray);
+  --bg-alt: #E2E8F0;
+  --bg-card: var(--color-white);
+  --bg-nav: rgba(255, 255, 255, 0.9);
+  
+  --text-main: var(--color-navy);
+  --text-muted: var(--color-text-body);
+  
+  /* Typography */
+  --font-heading: 'Poppins', sans-serif;
+  --font-body: 'Inter', sans-serif;
+  
+  /* Shadows & Glass */
+  --shadow-sm: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+  --shadow-md: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+  --shadow-lg: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+  --glass-bg: rgba(255, 255, 255, 0.7);
+  --glass-border: 1px solid rgba(255, 255, 255, 0.3);
+  --glass-blur: blur(10px);
+
+  /* Spacing */
+  --space-xs: 0.5rem;
+  --space-sm: 1rem;
+  --space-md: 2rem;
+  --space-lg: 4rem;
+  --space-xl: 6rem;
+  
+  /* Transitions */
+  --transition-fast: 0.2s ease-in-out;
+  --transition-normal: 0.3s ease-in-out;
+}
+
+/* Dark Theme Overrides */
+[data-theme="dark"] {
+  --bg-main: var(--color-navy);
+  --bg-alt: #0B1121;
+  --bg-card: #1E293B;
+  --bg-nav: rgba(15, 23, 42, 0.9);
+  
+  --text-main: var(--color-white);
+  --text-muted: #94A3B8;
+  
+  --glass-bg: rgba(30, 41, 59, 0.7);
+  --glass-border: 1px solid rgba(255, 255, 255, 0.1);
+}
