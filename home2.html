@@ -79,6 +79,20 @@
       transform: translateY(-30px);
     }
 
+    .btn-popular {
+      background: var(--color-white);
+      color: var(--color-primary) !important;
+      box-shadow: var(--shadow-md);
+      transition: all var(--transition-fast);
+    }
+
+    .btn-popular:hover {
+      background: var(--color-secondary) !important;
+      color: var(--color-white) !important;
+      transform: translateY(-3px);
+      box-shadow: 0 8px 20px rgba(16, 185, 129, 0.4);
+    }
+
     .price {
       font-size: 2.5rem;
       font-family: var(--font-heading);
@@ -250,17 +264,34 @@
       opacity: 1;
     }
 
-    @media (max-width: 768px) {
+    @media (max-width: 1024px) {
+      .grid-4 {
+        grid-template-columns: repeat(2, 1fr) !important;
+      }
+
       .split-hero {
         grid-template-columns: 1fr;
+        position: relative;
+        background: linear-gradient(rgba(15, 23, 42, 0.82), rgba(15, 23, 42, 0.88)), url('https://images.unsplash.com/photo-1557597774-9d273605dfa9?auto=format&fit=crop&q=80&w=1200') center/cover;
+        min-height: auto;
       }
+      
       .split-hero-image {
         display: none;
       }
+      
       .split-hero-content {
-        padding: var(--space-xl) var(--space-sm);
+        padding: 100px var(--space-md) 40px var(--space-md);
         text-align: center;
+        color: var(--color-white);
       }
+
+      .split-hero-content h1,
+      .split-hero-content p,
+      .split-hero-content li {
+        color: var(--color-white) !important;
+      }
+
       .package-card.popular {
         transform: translateY(0);
       }
@@ -269,6 +300,15 @@
       }
       .process-step::after {
         display: none;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .split-hero-content {
+        padding: 95px var(--space-sm) 30px var(--space-sm);
+      }
+      .section {
+        padding: 2.5rem 0;
       }
     }
   </style>
@@ -290,10 +330,10 @@
         <span style="color: var(--color-primary); font-weight: 600; letter-spacing: 2px; text-transform: uppercase;">Smart Security Showcase</span>
         <h1 class="animate-fade-in" style="margin-top: 15px;">Next-Generation Protection for the Modern Era</h1>
         <p class="animate-fade-in delay-200" style="font-size: 1.1rem; margin-bottom: 30px;">Experience the future of property security. Fully integrated, cloud-managed, and accessible from anywhere on any device.</p>
-        <ul class="animate-fade-in delay-300" style="margin-bottom: 30px; display: flex; flex-direction: column; gap: 10px; align-items: center;">
-          <li style="display: flex; align-items: center; gap: 10px;"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--color-secondary)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg> Artificial Intelligence Motion Detection</li>
-          <li style="display: flex; align-items: center; gap: 10px;"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--color-secondary)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg> Seamless Smart Home Integration</li>
-          <li style="display: flex; align-items: center; gap: 10px;"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--color-secondary)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg> 24/7 Cloud Video Backup</li>
+        <ul class="animate-fade-in delay-300" style="margin-bottom: 30px; display: inline-flex; flex-direction: column; gap: 12px; align-items: flex-start; text-align: left;">
+          <li style="display: flex; align-items: center; gap: 10px;"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--color-secondary)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink: 0;"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg> <span>Artificial Intelligence Motion Detection</span></li>
+          <li style="display: flex; align-items: center; gap: 10px;"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--color-secondary)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink: 0;"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg> <span>Seamless Smart Home Integration</span></li>
+          <li style="display: flex; align-items: center; gap: 10px;"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--color-secondary)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink: 0;"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg> <span>24/7 Cloud Video Backup</span></li>
         </ul>
         <div class="animate-fade-in delay-400">
           <a href="free-consultation.html" class="btn btn-primary">Start Your Project</a>
@@ -337,7 +377,7 @@
               <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--color-secondary)" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg> 1TB NVR Storage</li>
               <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--color-secondary)" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg> Professional Installation</li>
             </ul>
-            <a href="contact.html" class="btn btn-primary" style="background: white; color: var(--color-primary);">Get Quote</a>
+            <a href="contact.html" class="btn btn-primary btn-popular">Get Quote</a>
           </div>
 
           <!-- Commercial Package -->

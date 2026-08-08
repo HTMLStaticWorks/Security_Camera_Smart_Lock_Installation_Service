@@ -12,6 +12,7 @@ class AppHeader extends HTMLElement {
           width: 100%;
           background: var(--bg-nav);
           backdrop-filter: var(--glass-blur);
+          -webkit-backdrop-filter: var(--glass-blur);
           z-index: 1000;
           border-bottom: var(--glass-border);
           transition: all var(--transition-normal);
@@ -33,6 +34,8 @@ class AppHeader extends HTMLElement {
           align-items: center;
           gap: 10px;
           transition: color var(--transition-fast);
+          white-space: nowrap;
+          flex-shrink: 0;
         }
 
         .logo:hover {
@@ -73,8 +76,9 @@ class AppHeader extends HTMLElement {
         
         .header-actions {
           display: flex;
-          gap: 15px;
+          gap: 12px;
           align-items: center;
+          flex-shrink: 0;
         }
 
         .icon-btn {
@@ -90,6 +94,7 @@ class AppHeader extends HTMLElement {
           height: 40px;
           border-radius: 50%;
           transition: background var(--transition-fast);
+          flex-shrink: 0;
         }
 
         .icon-btn:hover {
@@ -99,41 +104,146 @@ class AppHeader extends HTMLElement {
         .hamburger {
           display: none;
           flex-direction: column;
+          justify-content: center;
+          align-items: center;
           gap: 5px;
           cursor: pointer;
           border: none;
           background: transparent;
+          width: 40px;
+          height: 40px;
+          padding: 6px;
+          border-radius: 8px;
+          transition: background var(--transition-fast);
+          flex-shrink: 0;
+        }
+
+        .hamburger:hover {
+          background: rgba(148, 163, 184, 0.2);
         }
         
         .hamburger span {
-          width: 25px;
-          height: 3px;
+          display: block;
+          width: 24px;
+          height: 2.5px;
           background: var(--text-main);
           border-radius: 2px;
-          transition: all 0.3s;
+          transition: all 0.3s ease-in-out;
+        }
+
+        .hamburger.active span:nth-child(1) {
+          transform: translateY(7.5px) rotate(45deg);
+        }
+
+        .hamburger.active span:nth-child(2) {
+          opacity: 0;
+        }
+
+        .hamburger.active span:nth-child(3) {
+          transform: translateY(-7.5px) rotate(-45deg);
+        }
+
+        .mobile-nav-cta, .mobile-nav-tools {
+          display: none;
         }
 
         /* Mobile Nav */
         @media (max-width: 1024px) {
+          .desktop-cta, .desktop-only-controls {
+            display: none !important;
+          }
+
+          .header-actions {
+            gap: 6px;
+          }
+
+          .hamburger {
+            display: flex;
+          }
+
           .nav-links {
             position: fixed;
             top: 80px;
             left: -100%;
             width: 100%;
-            height: calc(100vh - 80px);
+            height: calc(100dvh - 80px);
             background: var(--bg-main);
             flex-direction: column;
-            justify-content: center;
+            justify-content: flex-start;
             align-items: center;
-            transition: left 0.3s ease;
+            padding: 30px 20px;
+            gap: 16px;
+            transition: left 0.3s ease-in-out;
+            overflow-y: auto;
+            box-shadow: var(--shadow-lg);
+            z-index: 999;
           }
           
           .nav-links.show {
             left: 0;
           }
 
-          .hamburger {
+          .nav-link {
+            font-size: 1.1rem;
+            padding: 8px 16px;
+            width: 100%;
+            text-align: center;
+          }
+
+          .mobile-nav-tools {
             display: flex;
+            gap: 12px;
+            width: 100%;
+            max-width: 280px;
+            margin-top: 10px;
+            padding-top: 15px;
+            border-top: 1px solid rgba(148, 163, 184, 0.2);
+            justify-content: center;
+          }
+
+          .mobile-tool-btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            flex: 1;
+            padding: 10px 14px;
+            background: rgba(148, 163, 184, 0.12);
+            border: 1px solid rgba(148, 163, 184, 0.25);
+            border-radius: 12px;
+            color: var(--text-main);
+            font-size: 0.9rem;
+            font-weight: 500;
+            font-family: var(--font-body);
+            cursor: pointer;
+            transition: all var(--transition-fast);
+          }
+
+          .mobile-tool-btn:hover {
+            background: rgba(148, 163, 184, 0.25);
+            border-color: var(--color-primary);
+          }
+
+          .mobile-tool-btn .btn-icon {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+          }
+
+          .mobile-nav-cta {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            width: 100%;
+            max-width: 280px;
+            margin-top: 5px;
+            padding-top: 15px;
+            border-top: 1px solid rgba(148, 163, 184, 0.2);
+          }
+
+          .mobile-nav-cta .btn {
+            width: 100%;
+            text-align: center;
           }
         }
       </style>
@@ -155,19 +265,39 @@ class AppHeader extends HTMLElement {
             <a href="products.html" class="nav-link">Products</a>
             <a href="blog.html" class="nav-link">Blog</a>
             <a href="contact.html" class="nav-link">Contact</a>
+
+            <div class="mobile-nav-tools">
+              <button class="mobile-tool-btn theme-toggle" title="Toggle Theme" aria-label="Toggle Theme">
+                <span class="btn-icon">
+                   <!-- Sun/Moon SVG will be injected by app.js -->
+                </span>
+                <span class="btn-label">Dark Mode</span>
+              </button>
+              <button class="mobile-tool-btn rtl-toggle" title="Toggle RTL" aria-label="Toggle RTL">
+                <span class="btn-icon">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8 3 4 7l4 4"/><path d="M4 7h16"/><path d="m16 21 4-4-4-4"/><path d="M20 17H4"/></svg>
+                </span>
+                <span class="btn-label">RTL Layout</span>
+              </button>
+            </div>
+
+            <div class="mobile-nav-cta">
+              <a href="signup.html" class="btn btn-outline">Sign Up</a>
+              <a href="free-consultation.html" class="btn btn-primary">Book Consultation</a>
+            </div>
           </nav>
 
           <div class="header-actions">
-            <button class="icon-btn" id="theme-toggle" title="Toggle Theme">
+            <button class="icon-btn theme-toggle desktop-only-controls" title="Toggle Theme" aria-label="Toggle Theme">
                <!-- Sun/Moon SVG will be injected by app.js -->
             </button>
-            <button class="icon-btn" id="rtl-toggle" title="Toggle RTL">
+            <button class="icon-btn rtl-toggle desktop-only-controls" title="Toggle RTL" aria-label="Toggle RTL">
                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8 3 4 7l4 4"/><path d="M4 7h16"/><path d="m16 21 4-4-4-4"/><path d="M20 17H4"/></svg>
             </button>
-            <a href="signup.html" class="btn btn-outline" style="padding: 8px 16px; font-size: 0.9rem;">Sign Up</a>
-            <a href="free-consultation.html" class="btn btn-primary" style="padding: 8px 16px; font-size: 0.9rem;">Book Consultation</a>
+            <a href="signup.html" class="btn btn-outline desktop-cta" style="padding: 8px 16px; font-size: 0.9rem;">Sign Up</a>
+            <a href="free-consultation.html" class="btn btn-primary desktop-cta" style="padding: 8px 16px; font-size: 0.9rem;">Book Consultation</a>
             
-            <button class="hamburger" id="hamburger-menu">
+            <button class="hamburger" id="hamburger-menu" aria-label="Toggle Navigation Menu">
               <span></span>
               <span></span>
               <span></span>

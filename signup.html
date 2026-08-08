@@ -23,11 +23,61 @@
     .auth-card {
       background: var(--bg-card);
       width: 100%;
-      max-width: 500px;
+      max-width: 480px;
       padding: var(--space-lg);
-      border-radius: 20px;
-      box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+      border-radius: 24px;
+      box-shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.15);
       position: relative;
+    }
+
+    .auth-card-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: var(--space-md);
+    }
+
+    .auth-home-btn {
+      color: var(--text-main);
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 0.9rem;
+      font-weight: 600;
+      text-decoration: none;
+      padding: 8px 16px;
+      background: rgba(148, 163, 184, 0.15);
+      border-radius: 20px;
+      transition: all var(--transition-fast);
+    }
+
+    .auth-home-btn:hover {
+      background: rgba(148, 163, 184, 0.3);
+    }
+
+    .auth-top-controls {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .auth-icon-btn {
+      background: rgba(148, 163, 184, 0.15);
+      border: none;
+      color: var(--text-main);
+      cursor: pointer;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all var(--transition-fast);
+    }
+    
+    .auth-icon-btn:hover {
+      background: rgba(148, 163, 184, 0.3);
+      transform: translateY(-2px);
     }
 
     .auth-logo {
@@ -66,23 +116,25 @@
       font-size: 0.95rem;
     }
 
-    .auth-icon-btn {
-      background: rgba(148, 163, 184, 0.2);
-      border: none;
-      color: var(--text-main);
-      cursor: pointer;
-      width: 40px;
-      height: 40px;
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      transition: all var(--transition-fast);
-    }
-    
-    .auth-icon-btn:hover {
-      background: rgba(148, 163, 184, 0.4);
-      transform: translateY(-2px);
+    @media (max-width: 576px) {
+      .auth-layout {
+        padding: 15px;
+      }
+
+      .auth-card {
+        padding: 20px 16px;
+        border-radius: 20px;
+      }
+
+      .auth-home-btn {
+        font-size: 0.85rem;
+        padding: 6px 12px;
+      }
+
+      .auth-icon-btn {
+        width: 36px;
+        height: 36px;
+      }
     }
   </style>
   <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%232563EB' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z'/%3E%3Ccircle cx='12' cy='12' r='3'/%3E%3C/svg%3E">
@@ -90,20 +142,22 @@
 <body>
 
   <div class="auth-layout">
-    <!-- Fixed controls outside auth-card -->
-    <a href="index.html" style="position: fixed; top: 20px; left: 20px; color: var(--text-main); display: flex; align-items: center; gap: 5px; font-size: 0.9rem; text-decoration: none; z-index: 10;">
-      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg> Home
-    </a>
-    <div style="position: fixed; top: 20px; right: 20px; display: flex; gap: 15px; z-index: 10;">
-      <button id="rtl-toggle" class="auth-icon-btn" title="Toggle RTL">
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8 3 4 7l4 4"/><path d="M4 7h16"/><path d="m16 21 4-4-4-4"/><path d="M20 17H4"/></svg>
-      </button>
-      <button id="theme-toggle" class="auth-icon-btn" title="Toggle Theme">
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
-      </button>
-    </div>
-
     <div class="auth-card animate-fade-in">
+      
+      <!-- Inside Card Header -->
+      <div class="auth-card-header">
+        <a href="index.html" class="auth-home-btn">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg> Home
+        </a>
+        <div class="auth-top-controls">
+          <button class="auth-icon-btn rtl-toggle" title="Toggle RTL" aria-label="Toggle RTL">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8 3 4 7l4 4"/><path d="M4 7h16"/><path d="m16 21 4-4-4-4"/><path d="M20 17H4"/></svg>
+          </button>
+          <button class="auth-icon-btn theme-toggle" title="Toggle Theme" aria-label="Toggle Theme">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+          </button>
+        </div>
+      </div>
 
       <a href="index.html" class="auth-logo">
         <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="var(--color-primary)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
