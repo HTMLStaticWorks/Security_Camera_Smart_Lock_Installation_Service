@@ -149,7 +149,7 @@ class AppHeader extends HTMLElement {
 
         /* Mobile Nav */
         @media (max-width: 1024px) {
-          .desktop-cta, .desktop-only-controls {
+          .desktop-cta {
             display: none !important;
           }
 
@@ -173,7 +173,7 @@ class AppHeader extends HTMLElement {
             align-items: center;
             padding: 30px 20px;
             gap: 16px;
-            transition: left 0.3s ease-in-out;
+            transition: left 0.3s ease-in-out, right 0.3s ease-in-out;
             overflow-y: auto;
             box-shadow: var(--shadow-lg);
             z-index: 999;
@@ -181,6 +181,16 @@ class AppHeader extends HTMLElement {
           
           .nav-links.show {
             left: 0;
+          }
+
+          [dir="rtl"] .nav-links {
+            left: auto;
+            right: -100%;
+          }
+
+          [dir="rtl"] .nav-links.show {
+            right: 0;
+            left: auto;
           }
 
           .nav-link {
@@ -288,10 +298,10 @@ class AppHeader extends HTMLElement {
           </nav>
 
           <div class="header-actions">
-            <button class="icon-btn theme-toggle desktop-only-controls" title="Toggle Theme" aria-label="Toggle Theme">
+            <button class="icon-btn theme-toggle" title="Toggle Theme" aria-label="Toggle Theme">
                <!-- Sun/Moon SVG will be injected by app.js -->
             </button>
-            <button class="icon-btn rtl-toggle desktop-only-controls" title="Toggle RTL" aria-label="Toggle RTL">
+            <button class="icon-btn rtl-toggle" title="Toggle RTL" aria-label="Toggle RTL">
                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8 3 4 7l4 4"/><path d="M4 7h16"/><path d="m16 21 4-4-4-4"/><path d="M20 17H4"/></svg>
             </button>
             <a href="signup.html" class="btn btn-outline desktop-cta" style="padding: 8px 16px; font-size: 0.9rem;">Sign Up</a>

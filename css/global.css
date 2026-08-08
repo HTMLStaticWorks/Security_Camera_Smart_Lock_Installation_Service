@@ -164,11 +164,31 @@ ul {
 
 /* RTL Support */
 [dir="rtl"] {
+  direction: rtl;
   text-align: right;
+}
+
+[dir="rtl"] .back-to-top {
+  right: auto;
+  left: 30px;
 }
 
 [dir="rtl"] .btn {
   flex-direction: row-reverse;
+}
+
+[dir="rtl"] .logo {
+  flex-direction: row;
+}
+
+[dir="rtl"] .mobile-tool-btn {
+  flex-direction: row;
+}
+
+[dir="rtl"] input,
+[dir="rtl"] select,
+[dir="rtl"] textarea {
+  text-align: right;
 }
 
 /* Grid System */
