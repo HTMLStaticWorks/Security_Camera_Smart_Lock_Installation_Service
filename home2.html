@@ -226,7 +226,13 @@
         left: 0;
       }
       .timeline-step.left .step-number, .timeline-step.right .step-number {
-        left: 0;
+        left: 30px;
+        right: auto;
+        transform: translate(-50%, -50%);
+      }
+      .timeline-content {
+        padding: var(--space-sm);
+        word-wrap: break-word;
       }
     }
 
@@ -265,9 +271,7 @@
     }
 
     @media (max-width: 1024px) {
-      .grid-4 {
-        grid-template-columns: repeat(2, 1fr) !important;
-      }
+
 
       .split-hero {
         grid-template-columns: 1fr;
@@ -423,7 +427,7 @@
             <h2 style="color: var(--color-white); margin-top: 15px; margin-bottom: 20px;">The Vigilant Mobile App</h2>
             <p style="color: var(--color-light-gray); margin-bottom: 30px; font-size: 1.1rem;">Manage your entire security infrastructure from anywhere in the world. View live 4K streams, lock/unlock doors remotely, and receive instant push notifications if motion is detected.</p>
             
-            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
+            <div class="grid grid-2" style="gap: 20px;">
               <div style="background: rgba(255, 255, 255, 0.1); padding: 20px; border-radius: 15px;">
                 <h4 style="color: var(--color-white); margin-bottom: 10px;">Live Streaming</h4>
                 <p style="font-size: 0.9rem; color: #94A3B8; margin: 0;">Crystal clear remote viewing with two-way audio.</p>
